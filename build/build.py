@@ -68,7 +68,7 @@ def build_vocab_console(file_path):
                 text = f.read()
                 raw_sentences = [s.strip() for s in re.split(delimiters, text) if s.strip()]
          
-                sentences_lengths.extend(list(map(lambda x :len(x),raw_sentences)) )
+                sentences_lengths.extend(list(map(lambda x :len(x.split()),raw_sentences)) )
                 docs = [nlp(sent) for sent in raw_sentences]
                 
                 for doc in docs:
