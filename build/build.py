@@ -24,7 +24,7 @@ def build_vocab_console(file_path):
     
     ponctuation_tokens = 0
     all_tokens = 0
-    
+    sentences_lengths=[]
     stats = {
         "stop_word": 0, "ner": 0, "in_Dic": 0,
         "Stem": 0, "lemma": 0, "rejected": 0,
@@ -67,7 +67,8 @@ def build_vocab_console(file_path):
             with open(os.path.join(file_path, file), 'r', encoding='utf-8') as f:
                 text = f.read()
                 raw_sentences = [s.strip() for s in re.split(delimiters, text) if s.strip()]
-
+         
+                sentences_lengths.extend(list(map(lambda x :len(x),raw_sentences)) )
                 docs = [nlp(sent) for sent in raw_sentences]
                 
                 for doc in docs:
@@ -148,12 +149,13 @@ def build_vocab_console(file_path):
     words_count = all_tokens - ponctuation_tokens
     stats['words_count'] = words_count
     
-    return vocab, end_words, tokens, stats
+    return vocab, end_words, tokens, stats,sentences_lengths
 
-vocab, end_words, tokens, stats = build_vocab_console("./data/Culture")
+vocab, end_words, tokens, stats,sentences_lengths = build_vocab_console("./data/Culture")
 
 
 pickle.dump(vocab,open("./results/vocab.pkl"))
 pickle.dump(end_words,open("./results/end_words.pkl"))
 pickle.dump(tokens,open("./results/tokens.pkl"))
 pickle.dump(stats,open("./results/stats.pkl"))
+pickle.dump(sentences_lengths,open("./results/sentences_lengths.pkl"))
