@@ -1,0 +1,9 @@
+arabic-reshaper
+python-bidi
+gradio 
+networkx 
+matplotlib 
+pandas
+stanza
+Tashaphyne
+rich
