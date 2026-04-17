@@ -10,7 +10,7 @@ def get_stats_html():
     """
     with open("./results/stats.pkl", 'rb') as f:
         stats = pickle.load(f)
-        print(stats)
+        
     
     html_content = "<div class='stats-container'>"
 
@@ -126,4 +126,4 @@ with gr.Blocks(css=custom_css, theme=gr.themes.Soft()) as app:
 
 
 if __name__ == "__main__":
-    app.launch(debug=True)
+    app.launch(css=custom_css, theme=gr.themes.Soft())
