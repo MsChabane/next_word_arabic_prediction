@@ -96,15 +96,15 @@ def build_vocab_console(file_path):
                             stats["ner"] += 1
                             continue
 
-                        elif check_word_in_db(text_word, '/content/drive/MyDrive/NLP/TP/dictionary.db'):
+                        elif check_word_in_db(text_word, ):
                             stats["in_Dic"] += 1
                             is_valid_vocab = True
 
-                        elif check_word_in_db(ArListem.light_stem(text_word), '/content/drive/MyDrive/NLP/TP/dictionary.db'):
+                        elif check_word_in_db(ArListem.light_stem(text_word), ):
                             stats["Stem"] += 1
                             is_valid_vocab = True
 
-                        elif check_word_in_db(word.lemma, '/content/drive/MyDrive/NLP/TP/dictionary.db'):
+                        elif check_word_in_db(word.lemma, ):
                             stats["lemma"] += 1
                             is_valid_vocab = True
 

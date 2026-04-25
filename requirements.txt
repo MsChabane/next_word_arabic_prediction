@@ -4,7 +4,6 @@ gradio
 networkx 
 matplotlib 
 pandas
-stanza
 Tashaphyne
 rich
 pyvis

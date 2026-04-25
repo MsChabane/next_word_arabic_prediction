@@ -26,10 +26,10 @@ def get_stats_html():
     }
     for key, value in stats.items():
         if key =='POS':
-            value= sum(value.values())
+            value=sum(value.values())
         html_content += f"""
         <div class='stat-box'>
-            <div class='stat-number'>{value}</div>
+            <div class='stat-number'>{f"{value}" if key =='words_count' else f"{round(value*100/stats['words_count'],3)}%"}</div>
             <div class='stat-label'>{transform.get(key)}</div>
         </div>
         """
@@ -96,6 +96,8 @@ with gr.Blocks(css=custom_css, theme=gr.themes.Soft()) as app:
             
             gr.Markdown("<br><h3 style='text-align: center;'>Sentence Length Distribution</h3>")
             gr.Image(value="./results/distribution_sentences.png", label="Sentence Length Distribution", interactive=False)
+            gr.Markdown("<br><h3 style='text-align: center;'>Caracter Distribution</h3>")
+            gr.Image(value="./results/caracter_heatmap.png", label="Caracter Distribution", interactive=False)
             
 
         with gr.TabItem("🕸️ Word Network"):
